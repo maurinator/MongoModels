@@ -29,11 +29,28 @@ class Model:
 			print ("model does not exist")
 
 	def insertIntoModel(self, items):
-		if exists:
+		if self.exists:
 			for item in items:
 				row_id = self.db[self.tName].count()
 				item['row_id'] = row_id
 				print("Add '" + str(item) + "' to model '" + self.tName + "'.")
 				self.db[self.tName].insert(item)
+		else:
+			print ("model does not exist")
+
+	def getFromModel(self, items):
+		result = []
+		if self.exists:
+			for item in items:
+				for r in self.db[self.tName].find(item):
+					result.append(r)
+		else:
+			print ("model does not exist")
+		return result
+
+	def deleteFromModel(self, items):
+		if self.exists:
+			for item in items:
+				self.db[self.tName].delete_many(item)
 		else:
 			print ("model does not exist")
