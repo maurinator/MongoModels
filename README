@@ -1,0 +1,9 @@
+from MongoModel import MongoModel
+
+Example:
+  MongoModel(db, name_of_collection)
+
+  MongoModel.createModel()
+  MongoModel.deleteModel()
+  MongoModel.printModel()
+  MongoModel.insertIntoModel([{"key", "value"},{}])
